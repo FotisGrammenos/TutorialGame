@@ -15,6 +15,14 @@ run/main_scene="uid://bkyklv3vea01"
 config/features=PackedStringArray("4.5", "C#", "Forward Plus")
 config/icon="res://scenes/main_character/images/icon.svg"
 
+[autoload]
+
+GameManager="*res://GameManager.cs"
+
+[display]
+
+window/stretch/mode="canvas_items"
+
 [dotnet]
 
 project/assembly_name="TutorialGame"
