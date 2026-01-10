@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bkyklv3vea01"]
+[gd_scene load_steps=8 format=3 uid="uid://bkyklv3vea01"]
 
 [ext_resource type="Texture2D" uid="uid://b3xd0py30ccj3" path="res://Yellow.png" id="1_112p8"]
 [ext_resource type="Texture2D" uid="uid://ci4x0x07wa4oy" path="res://Terrain (16x16).png" id="2_e2u21"]
 [ext_resource type="PackedScene" uid="uid://c8ihipy182njv" path="res://scenes/main_character/character_body_2d.tscn" id="3_112p8"]
+[ext_resource type="PackedScene" uid="uid://ce5mjtvrn0avh" path="res://scenes/collectables/collectable.tscn" id="4_e2u21"]
+[ext_resource type="Script" uid="uid://64yvbl8p2qlv" path="res://GameManager.cs" id="5_bss38"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tda05"]
 texture = ExtResource("2_e2u21")
@@ -175,11 +177,8 @@ sources/0 = SubResource("TileSetAtlasSource_tda05")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 1165.0
+offset_bottom = 645.0
 texture = ExtResource("1_112p8")
 stretch_mode = 1
 
@@ -192,3 +191,41 @@ layer_0/tile_data = PackedInt32Array(720897, 458752, 4, 786433, 458752, 5, 72089
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("3_112p8")]
 position = Vector2(-12, -10)
+
+[node name="Collectable" parent="." instance=ExtResource("4_e2u21")]
+position = Vector2(1038, 225)
+
+[node name="Collectable2" parent="." instance=ExtResource("4_e2u21")]
+position = Vector2(583, 480)
+
+[node name="Collectable3" parent="." instance=ExtResource("4_e2u21")]
+position = Vector2(922, 586)
+
+[node name="Collectable4" parent="." instance=ExtResource("4_e2u21")]
+position = Vector2(365, 101.00001)
+
+[node name="Collectable5" parent="." instance=ExtResource("4_e2u21")]
+position = Vector2(27, 103.00001)
+
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("5_bss38")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="UI"]
+offset_right = 188.0
+offset_bottom = 79.0
+
+[node name="PointsLabel" type="Label" parent="UI/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Points : 0"
+horizontal_alignment = 1
+vertical_alignment = 1
