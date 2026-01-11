@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="TutorialGame"
-run/main_scene="uid://cedbwp5qhhx2d"
+run/main_scene="uid://ce3io37qtrwd7"
 config/features=PackedStringArray("4.5", "C#", "Forward Plus")
 config/icon="res://scenes/main_character/images/icon.svg"
 
 [autoload]
 
 GameManager="*res://GameManager.cs"
+BackGroundMusic="*res://scenes/BackGroundMusic.tscn"
 
 [display]
 

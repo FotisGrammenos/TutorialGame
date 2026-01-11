@@ -1,0 +1,34 @@
+using Godot;
+using System;
+
+public partial class FinishCheckPoint : Area2D
+{
+	[Export]
+    public string NextScenePath = "";
+	GameManager _gameManager;
+
+	public void OnEnterFinishCheckPoint(CharacterBody2d body)
+	{
+		if (_gameManager.IsAllCollectablesCollected())
+		{
+			GetTree().ChangeSceneToFile(NextScenePath);
+		}
+		else
+		{
+			GetTree().ChangeSceneToFile(GetTree().CurrentScene.SceneFilePath);
+		}
+
+		//_gameManager.InitCollectables();
+	}
+
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+		_gameManager = GetNode<GameManager>("/root/Node/GameManager");
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+	}
+}

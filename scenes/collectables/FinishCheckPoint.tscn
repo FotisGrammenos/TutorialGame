@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://dalmr5k2t2yaq"]
+[gd_scene load_steps=13 format=3 uid="uid://dalmr5k2t2yaq"]
 
 [ext_resource type="Texture2D" uid="uid://oi8rgrq6xg25" path="res://scenes/collectables/End (Pressed) (64x64).png" id="1_fnos8"]
+[ext_resource type="Script" uid="uid://d38ojvqlcioad" path="res://scenes/collectables/FinishCheckPoint.cs" id="1_nbppj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vorhk"]
 atlas = ExtResource("1_fnos8")
@@ -71,6 +72,7 @@ size = Vector2(45, 37)
 
 [node name="Area2D" type="Area2D"]
 scale = Vector2(2, 2)
+script = ExtResource("1_nbppj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -82,3 +84,5 @@ frame_progress = 0.6576573
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 13.5)
 shape = SubResource("RectangleShape2D_ul0fv")
+
+[connection signal="body_entered" from="." to="." method="OnEnterFinishCheckPoint"]
