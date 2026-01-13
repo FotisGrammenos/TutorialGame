@@ -7,7 +7,7 @@ public partial class MainManu : Node
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		_gameManager = GetNode<GameManager>("/root/Node/GameManager");
+		_gameManager = GetNode<GameManager>("/root/GameManager");
 	}
 	
     public void OnPressedButtonLevel1()

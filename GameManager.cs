@@ -10,6 +10,7 @@ public partial class GameManager : Node
 
 	public void AddPoint(int value)
 	{
+		_scoreLabel = GetNode<Label>("/root/Node/SceneObjects/UI/Panel/PointsLabel");
 		_points += value; 
 		_scoreLabel.Text = $"Points : {_points}";
 		GD.Print(_points);
@@ -23,13 +24,13 @@ public partial class GameManager : Node
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		_scoreLabel = GetNode<Label>("/root/Node/SceneObjects/UI/Panel/PointsLabel");
-		InitCollectables();
+		//InitCollectables();
 	}
 
 	public void InitCollectables()
 	{
 		_totalPoints = 4;
+		_points = 0;
 
 		//var level = GetTree().CurrentScene;
 

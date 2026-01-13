@@ -9,6 +9,8 @@ public partial class FinishCheckPoint : Area2D
 
 	public void OnEnterFinishCheckPoint(CharacterBody2d body)
 	{
+
+		//_gameManager.ResetScore();
 		if (_gameManager.IsAllCollectablesCollected())
 		{
 			GetTree().ChangeSceneToFile(NextScenePath);
@@ -18,13 +20,13 @@ public partial class FinishCheckPoint : Area2D
 			GetTree().ChangeSceneToFile(GetTree().CurrentScene.SceneFilePath);
 		}
 
-		//_gameManager.InitCollectables();
+		_gameManager.InitCollectables();
 	}
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		_gameManager = GetNode<GameManager>("/root/Node/GameManager");
+		_gameManager = GetNode<GameManager>("/root/GameManager");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
