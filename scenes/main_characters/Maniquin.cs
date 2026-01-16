@@ -46,4 +46,5 @@ public partial class Maniquin : AnimatedSprite2D
 	{
 		Play(state.ToString());
 	}
+
 }
