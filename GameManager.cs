@@ -1,19 +1,44 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class GameManager : Node
 { 
-	private Label _scoreLabel { get; set; }
+	PackedScene[] _mainCharactersScenes {get; set;}
+	PackedScene[] _idleCharactersScenes {get; set;}
+	PackedScene _idleSceneOfCharacter {get; set;}
+	PackedScene _mainSceneOfCharacter {get; set;} 
+	Label _scoreLabel { get; set; }
 	int _points {get; set;} = 0;
 	int _totalPoints {get; set;}
+
+	public GameManager()
+	{
+	 	_mainCharactersScenes = new PackedScene[]
+        {
+            GD.Load<PackedScene>("res://scenes/main_characters/YellowCharacter.tscn"),
+            GD.Load<PackedScene>("res://scenes/main_characters/BlueCharacter.tscn"),
+            GD.Load<PackedScene>("res://scenes/main_characters/PinkCharacter.tscn"),
+            GD.Load<PackedScene>("res://scenes/main_characters/GreenCharacter.tscn")
+        };
+
+		_idleCharactersScenes = new PackedScene[]
+        {
+            GD.Load<PackedScene>("res://scenes/main_characters/SelectYellow.tscn"),
+            GD.Load<PackedScene>("res://scenes/main_characters/SelectBlue.tscn"),
+            GD.Load<PackedScene>("res://scenes/main_characters/SelectPink.tscn"),
+            GD.Load<PackedScene>("res://scenes/main_characters/SelectGreen.tscn")
+        };
+	}
+
 
 	public void AddPoint(int value)
 	{
 		_scoreLabel = GetNode<Label>("/root/Node/SceneObjects/UI/Panel/PointsLabel");
 		_points += value; 
 		_scoreLabel.Text = $"Points : {_points}";
-		GD.Print(_points);
+		//GD.Print(_points);
 	}
 
 	public bool IsAllCollectablesCollected()
@@ -21,42 +46,35 @@ public partial class GameManager : Node
         return _points == _totalPoints;
     }
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		//InitCollectables();
-	}
-
 	public void InitCollectables()
 	{
 		_totalPoints = 4;
 		_points = 0;
-
-		//var level = GetTree().CurrentScene;
-
-		//var list = new List<Node>();
-
-        //foreach (Node child in level.GetChildren())
-        //{
-            // If the child is a Collectable script
-            //if (child is Collectable)
-            //{
-            //    list.Add(child);
-            //}
-        //}
-
-		//GD.Print($"Found {list.Count} collectables");
-
-		//foreach (var n in list)
-		//	GD.Print($" - {n.Name} ({n.GetType()})");
-
-		//_totalPoints = list.Count;
-
-		//GD.Print($"Total collectables: {_totalPoints}");
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	public void InitMainCaracter(int choosenCharacter)
 	{
+		_mainSceneOfCharacter = _mainCharactersScenes[choosenCharacter];
 	}
+
+	public PackedScene GetMainCharacter()
+	{
+		return _mainSceneOfCharacter;
+	}
+
+	public void InitIdleSceneOfCharacter(int choosenCharacter)
+	{
+		_idleSceneOfCharacter = _idleCharactersScenes[choosenCharacter];
+	}
+
+	public PackedScene GetIdleSceneCharacter()
+	{
+		return _idleSceneOfCharacter;	
+	}
+
+	public int GetIdleSceneCharactersCount()
+	{
+		return _idleCharactersScenes.Count();
+	}
+
 }

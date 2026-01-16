@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ixotsk6pb1ya"
-path="res://.godot/imported/icon.svg-9dcbff5094618362bb5b6eff8256162f.ctex"
+uid="uid://bdjtffkbl757n"
+path="res://.godot/imported/Fall (32x32).png-5135dc8ff2888b91b179e37c876f0a59.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/main_character/images/icon.svg"
-dest_files=["res://.godot/imported/icon.svg-9dcbff5094618362bb5b6eff8256162f.ctex"]
+source_file="res://scenes/main_characters/images/PinkCharacter/Fall (32x32).png"
+dest_files=["res://.godot/imported/Fall (32x32).png-5135dc8ff2888b91b179e37c876f0a59.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

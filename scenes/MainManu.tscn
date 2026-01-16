@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ce3io37qtrwd7"]
+[gd_scene load_steps=5 format=3 uid="uid://ce3io37qtrwd7"]
 
 [ext_resource type="Texture2D" uid="uid://b3xd0py30ccj3" path="res://scenes/Yellow.png" id="1_5tif6"]
 [ext_resource type="Script" uid="uid://dfhxw68cnuhk6" path="res://scenes/MainManu.cs" id="1_lk5oe"]
 [ext_resource type="Texture2D" uid="uid://bhgk145fd1ewl" path="res://scenes/Kiwi_HunderLogo.png" id="2_lk5oe"]
+[ext_resource type="Texture2D" uid="uid://bfx5n4ejlyyko" path="res://scenes/Brown.png" id="4_x3tno"]
 
 [node name="MainManu" type="Node"]
 script = ExtResource("1_lk5oe")
@@ -17,6 +18,15 @@ grow_vertical = 2
 texture = ExtResource("1_5tif6")
 stretch_mode = 1
 
+[node name="TextureRect" type="TextureRect" parent="BackGround"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 156.0
+offset_top = 180.0
+offset_right = 370.0
+offset_bottom = 397.0
+texture = ExtResource("4_x3tno")
+
 [node name="Logo" type="TextureRect" parent="."]
 texture_filter = 1
 anchors_preset = 8
@@ -24,44 +34,59 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -364.0
-offset_top = -152.0
-offset_right = 360.0
-offset_bottom = -16.0
+offset_left = -380.0
+offset_top = -298.0
+offset_right = 344.0
+offset_bottom = -162.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_lk5oe")
 
 [node name="Level1" type="Button" parent="."]
+texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -330.0
-offset_top = 55.0
-offset_right = -61.0
-offset_bottom = 183.0
+offset_left = -51.0
+offset_top = -117.0
+offset_right = 156.0
+offset_bottom = -14.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 30
 text = "Level 1"
 
 [node name="Level2" type="Button" parent="."]
+texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 52.0
-offset_top = 55.0
-offset_right = 321.0
-offset_bottom = 183.0
+offset_left = 182.0
+offset_top = -119.0
+offset_right = 401.0
+offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 30
 text = "Level 2
 "
 
+[node name="Next_Character" type="Button" parent="."]
+texture_filter = 1
+offset_left = 104.0
+offset_top = 402.0
+offset_right = 430.0
+offset_bottom = 501.0
+theme_override_font_sizes/font_size = 30
+text = "Change Character"
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(267, 294)
+
 [connection signal="pressed" from="Level1" to="." method="OnPressedButtonLevel1"]
 [connection signal="pressed" from="Level2" to="." method="OnPressedButtonLevel2"]
+[connection signal="pressed" from="Next_Character" to="." method="OnNextCharacterPressed"]
