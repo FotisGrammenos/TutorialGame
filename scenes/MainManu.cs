@@ -33,17 +33,20 @@ public partial class MainManu : Node
 	 
     private void PeerDisconnected(long id)
     {
+		GameManager.CoOpMode = false;
 		GD.Print($"Player disconected {id}");
     }
 
     private void PeerConnected(long id)
     {
+		GameManager.CoOpMode = true;
 		GD.Print($"Player connected {id}");
     }
 
 	private void ConnectedToServer()
 	{
 		GD.Print("Connected to server");
+		GameManager.CoOpMode = true;
 		RpcId(1,
 			"SentPlayerInforamtion",
 			Multiplayer.GetUniqueId(),
@@ -52,15 +55,17 @@ public partial class MainManu : Node
 
     private void ConnectionFailed()
     {
+		GameManager.CoOpMode = false;
 		GD.Print("Connected FAIL to server");
 	}
 
     public void OnPressedButtonLevel1()
 	{
 		GetTree().ChangeSceneToFile("res://scenes/Level1.tscn");
+		
 		_gameManager.InitCollectables();
 
-		_gameManager.InitMainCaracter(_currentCharacterIndex);
+		SentPlayerInforamtion(1, _gameManager.GetMainCharacter().ResourcePath);
 	}
 
 	public void OnPressedButtonLevel2()
@@ -68,7 +73,7 @@ public partial class MainManu : Node
 		GetTree().ChangeSceneToFile("res://scenes/Level2.tscn");
 		_gameManager.InitCollectables();
 
-		_gameManager.InitMainCaracter(_currentCharacterIndex);
+		SentPlayerInforamtion(1, _gameManager.GetMainCharacter().ResourcePath);
 	}
 
 	public void OnNextCharacterPressed()
@@ -144,21 +149,9 @@ public partial class MainManu : Node
 		{
 			GD.Print($"Playing  {player.Id}");
 		}
-
-		//var scene = ResourceLoader
-		//	.Load<PackedScene>("res://scenes/LevelCoOp.tscn")
-		//	.Instantiate<Level>();
-		
-		//GetTree().ChangeSceneToFile(scene);
-
-		//_gameManager.InitCollectables();
-
-		//_gameManager.InitMainCaracter(_currentCharacterIndex);
 		
 		GetTree().ChangeSceneToFile("res://scenes/LevelCoOp.tscn");
 
-		//GetTree().Root.AddChild(scene);
-		
 	}
 
 	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
@@ -177,7 +170,8 @@ public partial class MainManu : Node
 			GameManager.Players.Add(playerInfo);
 		}
 
-		if (Multiplayer.IsServer())
+		if (Multiplayer is not null &&
+				Multiplayer.IsServer())
 		{
 			foreach(var item in GameManager.Players)
 			{

@@ -34,10 +34,10 @@ public partial class Level : Node
 		}
 
 		//logic for single player
-		_characterAtThisLvl = GetNode<CharacterBody2D>("/root/Node/SceneObjects/CharacterBody2D");
-		var currentCharacter = _gameManager.GetMainCharacter().Instantiate() as CharacterBody2D;
-		currentCharacter.Position = _characterAtThisLvl.Position;
-		AddChild(currentCharacter);
-		_characterAtThisLvl = currentCharacter;
+		//_characterAtThisLvl = GetNode<CharacterBody2D>("/root/Node/SceneObjects/CharacterBody2D");
+		//var currentCharacter = _gameManager.GetMainCharacter().Instantiate() as CharacterBody2D;
+		//currentCharacter.Position = _characterAtThisLvl.Position;
+		//AddChild(currentCharacter);
+		//_characterAtThisLvl = currentCharacter;
 	}
 }

@@ -1,5 +1,5 @@
 using Godot;
-using System;
+using System.Collections.Generic;
 
 public partial class FinishCheckPoint : Area2D
 {
@@ -14,6 +14,10 @@ public partial class FinishCheckPoint : Area2D
 		if (_gameManager.IsAllCollectablesCollected())
 		{
 			GetTree().ChangeSceneToFile(NextScenePath);
+			if(NextScenePath == "res://scenes/MainManu.tscn")
+			{
+				GameManager.Players = new List<PlayerInfo>();
+			}
 		}
 		else
 		{

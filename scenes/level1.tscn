@@ -234,10 +234,10 @@ text = "Points : 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="SceneObjects"]
-unique_name_in_owner = true
-position = Vector2(30, 513)
-scale = Vector2(3, 3)
+[node name="PlayerSpawnPoints" type="Node2D" parent="SceneObjects"]
+
+[node name="0" type="Node2D" parent="SceneObjects/PlayerSpawnPoints" groups=["SpawnPoints"]]
+position = Vector2(39, 539)
 
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true

@@ -12,16 +12,20 @@ public partial class CharacterBody2d : CharacterBody2D
 
     public override void _Ready()
     {
-        GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer")
-			.SetMultiplayerAuthority(int.Parse(Name));
+		if(GameManager.CoOpMode) 
+        	GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer")
+				.SetMultiplayerAuthority(int.Parse(Name));
     }
 
 	public override void _PhysicsProcess(double delta)
 	{  
-		if(GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer")
-			.GetMultiplayerAuthority() != Multiplayer.GetUniqueId())
+		if(GameManager.CoOpMode)
 		{
-			return;
+			if(GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer")
+				.GetMultiplayerAuthority() != Multiplayer.GetUniqueId())
+			{
+				return;
+			}
 		}
 
 		CheckHorizondalInput(delta);

@@ -12,7 +12,8 @@ public partial class GameManager : Node
 	Label _scoreLabel { get; set; }
 	int _points {get; set;} = 0;
 	int _totalPoints {get; set;}
-
+	
+	public static bool  CoOpMode = false;
 	public static List<PlayerInfo> Players = new List<PlayerInfo>(); 
 
 	public GameManager()
