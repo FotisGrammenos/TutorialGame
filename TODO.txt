@@ -1,0 +1,16 @@
+Test commit
+1)Να φτιαχτεί σύστημα stats για χαρακτήρες:
+    Attack
+    Defense
+    Speed
+3)Να προστεθούν animations για:
+    Attack
+    Defense
+4)Να δημιουργηθεί καλύτερο UI για:
+    Champion select
+    Levels
+5)Να προστεθούν αντίπαλοι στις πίστες
+6)Co-Op να τελειωσει (και να μπορει να γινει export)
+6)PoweUps για τους χαρακτηρες.
+7)Menu with Options
+8)Πιο όμορφη γραμματοσειρά 
