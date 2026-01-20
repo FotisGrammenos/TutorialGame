@@ -1,14 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://bkyklv3vea01"]
+[gd_scene load_steps=9 format=3 uid="uid://bic75dyfvyfpg"]
 
-[ext_resource type="Texture2D" uid="uid://bfx5n4ejlyyko" path="res://scenes/Brown.png" id="1_6sh32"]
-[ext_resource type="Script" uid="uid://bamwmkcu1ul6f" path="res://scenes/Level.cs" id="1_76388"]
-[ext_resource type="Texture2D" uid="uid://ci4x0x07wa4oy" path="res://scenes/Terrain (16x16).png" id="2_ejswk"]
-[ext_resource type="PackedScene" uid="uid://ce5mjtvrn0avh" path="res://scenes/collectables/Kiwi.tscn" id="4_conm7"]
-[ext_resource type="PackedScene" uid="uid://dalmr5k2t2yaq" path="res://scenes/collectables/FinishCheckPoint.tscn" id="5_d3jkd"]
-[ext_resource type="Script" uid="uid://64yvbl8p2qlv" path="res://GameManager.cs" id="6_u3awl"]
+[ext_resource type="Script" uid="uid://bamwmkcu1ul6f" path="res://scenes/Level.cs" id="1_yvvbh"]
+[ext_resource type="Texture2D" uid="uid://bfx5n4ejlyyko" path="res://scenes/Brown.png" id="2_f14nn"]
+[ext_resource type="Texture2D" uid="uid://ci4x0x07wa4oy" path="res://scenes/Terrain (16x16).png" id="3_yp6lv"]
+[ext_resource type="PackedScene" uid="uid://ce5mjtvrn0avh" path="res://scenes/collectables/Kiwi.tscn" id="4_8ukie"]
+[ext_resource type="PackedScene" uid="uid://dalmr5k2t2yaq" path="res://scenes/collectables/FinishCheckPoint.tscn" id="5_ge24g"]
+[ext_resource type="Script" uid="uid://64yvbl8p2qlv" path="res://GameManager.cs" id="6_164bb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tda05"]
-texture = ExtResource("2_ejswk")
+texture = ExtResource("3_yp6lv")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -175,7 +175,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_tda05")
 
 [node name="Node" type="Node"]
-script = ExtResource("1_76388")
+script = ExtResource("1_yvvbh")
 
 [node name="SceneObjects" type="Node" parent="."]
 
@@ -183,7 +183,7 @@ script = ExtResource("1_76388")
 texture_filter = 1
 offset_right = 1165.0
 offset_bottom = 645.0
-texture = ExtResource("1_6sh32")
+texture = ExtResource("2_f14nn")
 stretch_mode = 1
 
 [node name="TileMap" type="TileMap" parent="SceneObjects"]
@@ -195,19 +195,19 @@ layer_0/tile_data = PackedInt32Array(851968, 393216, 6, 851969, 393216, 6, 85197
 
 [node name="Items" type="Node" parent="SceneObjects"]
 
-[node name="Collectable" parent="SceneObjects/Items" instance=ExtResource("4_conm7")]
+[node name="Collectable" parent="SceneObjects/Items" instance=ExtResource("4_8ukie")]
 position = Vector2(405, 490)
 
-[node name="Collectable2" parent="SceneObjects/Items" instance=ExtResource("4_conm7")]
+[node name="Collectable2" parent="SceneObjects/Items" instance=ExtResource("4_8ukie")]
 position = Vector2(371, 87)
 
-[node name="Collectable3" parent="SceneObjects/Items" instance=ExtResource("4_conm7")]
+[node name="Collectable3" parent="SceneObjects/Items" instance=ExtResource("4_8ukie")]
 position = Vector2(828, 391)
 
-[node name="Collectable4" parent="SceneObjects/Items" instance=ExtResource("4_conm7")]
+[node name="Collectable4" parent="SceneObjects/Items" instance=ExtResource("4_8ukie")]
 position = Vector2(116, 91)
 
-[node name="FinishCheckPoint" parent="SceneObjects/Items" instance=ExtResource("5_d3jkd")]
+[node name="FinishCheckPoint" parent="SceneObjects/Items" instance=ExtResource("5_ge24g")]
 position = Vector2(550, 556)
 NextScenePath = "res://scenes/Level2.tscn"
 
@@ -241,4 +241,4 @@ scale = Vector2(3, 3)
 
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
-script = ExtResource("6_u3awl")
+script = ExtResource("6_164bb")

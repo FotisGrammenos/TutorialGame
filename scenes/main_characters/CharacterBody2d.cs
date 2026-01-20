@@ -10,8 +10,20 @@ public partial class CharacterBody2d : CharacterBody2D
 	public float Gragvity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 	public event EventHandler<Vector2> CharaterVelocityUpdated;
 
+    public override void _Ready()
+    {
+        GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer")
+			.SetMultiplayerAuthority(int.Parse(Name));
+    }
+
 	public override void _PhysicsProcess(double delta)
 	{  
+		if(GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer")
+			.GetMultiplayerAuthority() != Multiplayer.GetUniqueId())
+		{
+			return;
+		}
+
 		CheckHorizondalInput(delta);
 		CheckVerticalInput(delta);
 		EmitCharacterVelocity(Velocity);
