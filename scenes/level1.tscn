@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://bic75dyfvyfpg"]
 
-[ext_resource type="Script" uid="uid://bamwmkcu1ul6f" path="res://scenes/Level.cs" id="1_yvvbh"]
-[ext_resource type="Texture2D" uid="uid://bfx5n4ejlyyko" path="res://scenes/Brown.png" id="2_f14nn"]
-[ext_resource type="Texture2D" uid="uid://ci4x0x07wa4oy" path="res://scenes/Terrain (16x16).png" id="3_yp6lv"]
-[ext_resource type="PackedScene" uid="uid://ce5mjtvrn0avh" path="res://scenes/collectables/Kiwi.tscn" id="4_8ukie"]
-[ext_resource type="PackedScene" uid="uid://dalmr5k2t2yaq" path="res://scenes/collectables/FinishCheckPoint.tscn" id="5_ge24g"]
-[ext_resource type="Script" uid="uid://64yvbl8p2qlv" path="res://GameManager.cs" id="6_164bb"]
+[ext_resource type="Texture2D" uid="uid://bfx5n4ejlyyko" path="res://scenes/Brown.png" id="1_6sh32"]
+[ext_resource type="Script" uid="uid://bamwmkcu1ul6f" path="res://scenes/Level.cs" id="1_76388"]
+[ext_resource type="Texture2D" uid="uid://ci4x0x07wa4oy" path="res://scenes/Terrain (16x16).png" id="2_ejswk"]
+[ext_resource type="PackedScene" uid="uid://ce5mjtvrn0avh" path="res://scenes/collectables/Kiwi.tscn" id="4_conm7"]
+[ext_resource type="PackedScene" uid="uid://dalmr5k2t2yaq" path="res://scenes/collectables/FinishCheckPoint.tscn" id="5_d3jkd"]
+[ext_resource type="Script" uid="uid://64yvbl8p2qlv" path="res://GameManager.cs" id="6_u3awl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tda05"]
 texture = ExtResource("3_yp6lv")
@@ -175,7 +175,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_tda05")
 
 [node name="Node" type="Node"]
-script = ExtResource("1_yvvbh")
+script = ExtResource("1_76388")
 
 [node name="SceneObjects" type="Node" parent="."]
 

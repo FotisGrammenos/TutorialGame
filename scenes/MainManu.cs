@@ -4,12 +4,6 @@ using System.Linq;
 
 public partial class MainManu : Node
 {
-	[Export] 
-	private int port = 8910;
-
-	[Export]
-	private string adress = "127.0.0.1";
-
 	Node2D _characterPreview;
     int _currentCharacterIndex;
 	GameManager _gameManager;
@@ -23,12 +17,6 @@ public partial class MainManu : Node
 		_gameManager.InitIdleSceneOfCharacter(_currentCharacterIndex);
 
 		LoadCharacter();
-		_gameManager.InitMainCaracter(_currentCharacterIndex);
-
-		Multiplayer.PeerConnected += PeerConnected;
-		Multiplayer.PeerDisconnected += PeerDisconnected;
-        Multiplayer.ConnectedToServer += ConnectedToServer;
-		Multiplayer.ConnectionFailed += ConnectionFailed;
 	}
 	 
     private void PeerDisconnected(long id)
@@ -60,7 +48,7 @@ public partial class MainManu : Node
 		GetTree().ChangeSceneToFile("res://scenes/Level1.tscn");
 		_gameManager.InitCollectables();
 
-		//_gameManager.InitMainCaracter(_currentCharacterIndex);
+		_gameManager.InitMainCaracter(_currentCharacterIndex);
 	}
 
 	public void OnPressedButtonLevel2()
@@ -68,7 +56,7 @@ public partial class MainManu : Node
 		GetTree().ChangeSceneToFile("res://scenes/Level2.tscn");
 		_gameManager.InitCollectables();
 
-		//_gameManager.InitMainCaracter(_currentCharacterIndex);
+		_gameManager.InitMainCaracter(_currentCharacterIndex);
 	}
 
 	public void OnNextCharacterPressed()
@@ -80,7 +68,6 @@ public partial class MainManu : Node
 		}
 
 		_gameManager.InitIdleSceneOfCharacter(_currentCharacterIndex);
-		_gameManager.InitMainCaracter(_currentCharacterIndex);
 		LoadCharacter();
 	}
 
@@ -100,91 +87,4 @@ public partial class MainManu : Node
 		sprite2D.Play("Default");
     }
 
-	public void OnHostButtonDown()
-	{
-		ENetMultiplayerPeer peer = new ENetMultiplayerPeer();
-		var error = peer.CreateServer(port, 2);
-		if(error != Error.Ok)
-		{
-			GD.Print($"Error :{error}");
-			return;
-		}
-
-		peer.Host.Compress(ENetConnection.CompressionMode.RangeCoder);
-
-		Multiplayer.MultiplayerPeer = peer;
-		GD.Print("Waitning For Players");
-		SentPlayerInforamtion(1, _gameManager.GetMainCharacter().ResourcePath);
-	}
-
-	public void OnJoinButtonDown()
-	{
-		ENetMultiplayerPeer peer = new ENetMultiplayerPeer();
-		peer.CreateClient(adress, port);
-		
-		peer.Host.Compress(ENetConnection.CompressionMode.RangeCoder);
-
-		Multiplayer.MultiplayerPeer = peer;
-		GD.Print("Joining Game");
-	}
-
-	public void OnStartCoOpGamePressed()
-	{
-		Rpc("GameCoOpStart");
-	}
-	
-	[Rpc(
-		MultiplayerApi.RpcMode.AnyPeer, 
-		CallLocal = true, 
-		TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)
-	]
-	private void GameCoOpStart()
-	{
-		foreach(var player in GameManager.Players)
-		{
-			GD.Print($"Playing  {player.Id}");
-		}
-
-		//var scene = ResourceLoader
-		//	.Load<PackedScene>("res://scenes/LevelCoOp.tscn")
-		//	.Instantiate<Level>();
-		
-		//GetTree().ChangeSceneToFile(scene);
-
-		//_gameManager.InitCollectables();
-
-		//_gameManager.InitMainCaracter(_currentCharacterIndex);
-		
-		GetTree().ChangeSceneToFile("res://scenes/LevelCoOp.tscn");
-
-		//GetTree().Root.AddChild(scene);
-		
-	}
-
-	[Rpc(MultiplayerApi.RpcMode.AnyPeer)]
-	private void SentPlayerInforamtion(int id, string scene)
-	{
-		GD.Print($"MPIKA SentPlayerInforamtion {id}");
-
-		PlayerInfo playerInfo = new PlayerInfo()
-		{
-			Id = id,
-			Name = $"player{id}",
-			SelectedCharacterPath = scene
-		};
-		if(GameManager.Players.FirstOrDefault(p => p.Id == playerInfo.Id) is null)
-		{
-			GameManager.Players.Add(playerInfo);
-		}
-
-		if (Multiplayer.IsServer())
-		{
-			foreach(var item in GameManager.Players)
-			{
-				GD.Print("ForeachAt SentPlayerInforamtion");
-				Rpc("SentPlayerInforamtion", item.Id, item.SelectedCharacterPath);
-			}
-		}
-
-	}
 }

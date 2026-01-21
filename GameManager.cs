@@ -13,8 +13,6 @@ public partial class GameManager : Node
 	int _points {get; set;} = 0;
 	int _totalPoints {get; set;}
 
-	public static List<PlayerInfo> Players = new List<PlayerInfo>(); 
-
 	public GameManager()
 	{
 	 	_mainCharactersScenes = new PackedScene[]
