@@ -5,20 +5,33 @@ using System.ComponentModel;
 public partial class Maniquin : AnimatedSprite2D
 {
 	CharacterBody2d _characterBody {get; set;}
+	AnimationPlayer _animationPlayer {get; set;}
 
-	protected enum AnimationStatesEnum { Default, Running, Jumping, Falling };
+	protected enum AnimationStatesEnum { Default, Running, Jumping, Falling, Attacking, Hit };
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
         _characterBody = GetParent<CharacterBody2d>();
+		_animationPlayer = GetParent().GetNode<AnimationPlayer>("AnimationPlayer");
 
 		_characterBody.CharaterVelocityUpdated += SetMovimentForAnimation;
+		_characterBody.AttackHandler += AttackHandler;
+		_characterBody.GetHitHandler += GetHitHandler;
 		
 		SetAnimation(AnimationStatesEnum.Default);
 	}
+    private void AttackHandler(object sender, int e)
+    {
+        SetAnimation(AnimationStatesEnum.Attacking);
+    }
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	private void GetHitHandler(object sender, int e)
+    {
+        SetAnimation(AnimationStatesEnum.Hit);
+    }
+
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(double delta)
 	{
 		_characterBody.HandleFlip(this);
 	}
@@ -44,7 +57,7 @@ public partial class Maniquin : AnimatedSprite2D
 
 	protected void SetAnimation(AnimationStatesEnum state)
 	{
-		Play(state.ToString());
+		this.SpeedScale = 0.6f;
+		_animationPlayer.Play(state.ToString());
 	}
-
 }

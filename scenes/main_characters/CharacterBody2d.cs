@@ -5,13 +5,35 @@ public partial class CharacterBody2d : CharacterBody2D
 {
 	[Export] public float Speed = 400.0f;
 	[Export] public float JumpVelocity = -900.0f;
-
-	//get the gravity 
+	[Export] public int AttackDamage = 1;
+	  
 	public float Gragvity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 	public event EventHandler<Vector2> CharaterVelocityUpdated;
+	public event EventHandler<int> AttackHandler;
+	public event EventHandler<int> GetHitHandler;
+	
+	bool _isAttacking {get; set;} = false;
+	bool _isGettingHit {get; set;} = false;
+	AnimationPlayer _animationPlayer {get; set;}
+	Area2D _attackingArea {get; set;} 
 
-	public override void _PhysicsProcess(double delta)
+    public override void _Ready()
+    {
+        _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+    	_animationPlayer.AnimationFinished += OnAnimationPlayerAnimationFinished;
+
+		_attackingArea = GetNode<Area2D>("AttackArea");
+
+	}
+
+    public override void _PhysicsProcess(double delta)
 	{  
+		Attack();
+		if (_isAttacking || _isGettingHit)
+		{
+			return;
+		}
+
 		CheckHorizondalInput(delta);
 		CheckVerticalInput(delta);
 		EmitCharacterVelocity(Velocity);
@@ -57,10 +79,53 @@ public partial class CharacterBody2d : CharacterBody2D
 	public virtual void HandleFlip(AnimatedSprite2D sprite)
     {
         if (Math.Abs(Velocity.X) > 0)
+		{
             sprite.FlipH = Math.Sign(Velocity.X) < 0 ;
+			_attackingArea.Scale = new Vector2(
+				Math.Sign(Velocity.X) < 0 ? -1 : 1, 1);
+		}
     }
+
+	public void Attack()
+	{
+		if (Input.IsActionJustPressed("attack"))
+		{
+			var itemsOverlap = _attackingArea.GetOverlappingAreas();
+
+			foreach(var item in itemsOverlap)
+			{
+				var node = item.GetParent();
+				GD.Print(item.Name);
+				item.QueueFree();
+				OnAnimationPlayerAnimationFinished("Hit");
+			}
+
+			_isAttacking = true;
+			AttackHandler?.Invoke(this, AttackDamage);
+		}
+	}
+
+	public void GetHit()
+	{
+		_isGettingHit = true;
+		GetHitHandler?.Invoke(this, AttackDamage);
+	}
+
 	protected void EmitCharacterVelocity(Vector2 velocity)
 	{
 		CharaterVelocityUpdated?.Invoke(this, velocity);
 	}
+
+	public void OnAnimationPlayerAnimationFinished(StringName animName)
+    {
+        if(animName == "Attacking")
+		{
+			_isAttacking = false;
+		}
+		
+		if (animName == "Hit")
+		{
+			_isGettingHit = false;
+		}
+    }
 }
