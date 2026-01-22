@@ -18,7 +18,7 @@ config/icon="res://scenes/main_characters/images/icon.svg"
 [autoload]
 
 GameManager="*res://GameManager.cs"
-BackGroundMusic="*res://scenes/BackGroundMusic.tscn"
+BackGroundMusic="*res://scenes/music/BackGroundMusic.tscn"
 
 [display]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfx5n4ejlyyko"
-path="res://.godot/imported/Brown.png-50814c0c3445cc7068ef2084de8fe56c.ctex"
+uid="uid://ci4x0x07wa4oy"
+path="res://.godot/imported/Terrain (16x16).png-4e2031d30b234fc6c8ce4ae03d9fa534.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Brown.png"
-dest_files=["res://.godot/imported/Brown.png-50814c0c3445cc7068ef2084de8fe56c.ctex"]
+source_file="res://scenes/levels/images/Terrain (16x16).png"
+dest_files=["res://.godot/imported/Terrain (16x16).png-4e2031d30b234fc6c8ce4ae03d9fa534.ctex"]
 
 [params]
 

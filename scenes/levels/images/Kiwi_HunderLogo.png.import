@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bhgk145fd1ewl"
-path="res://.godot/imported/Kiwi_HunderLogo.png-1b9c12ee396cb0a32923954c6e6fca33.ctex"
+path="res://.godot/imported/Kiwi_HunderLogo.png-416722e49bcec3942ba7636f8d3b3478.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Kiwi_HunderLogo.png"
-dest_files=["res://.godot/imported/Kiwi_HunderLogo.png-1b9c12ee396cb0a32923954c6e6fca33.ctex"]
+source_file="res://scenes/levels/images/Kiwi_HunderLogo.png"
+dest_files=["res://.godot/imported/Kiwi_HunderLogo.png-416722e49bcec3942ba7636f8d3b3478.ctex"]
 
 [params]
 

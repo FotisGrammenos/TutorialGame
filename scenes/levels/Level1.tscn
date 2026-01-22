@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://bkyklv3vea01"]
 
-[ext_resource type="Texture2D" uid="uid://bfx5n4ejlyyko" path="res://scenes/Brown.png" id="1_6sh32"]
-[ext_resource type="Script" uid="uid://bamwmkcu1ul6f" path="res://scenes/Level.cs" id="1_76388"]
-[ext_resource type="Texture2D" uid="uid://ci4x0x07wa4oy" path="res://scenes/Terrain (16x16).png" id="2_ejswk"]
+[ext_resource type="Texture2D" uid="uid://bfx5n4ejlyyko" path="res://scenes/levels/images/Brown.png" id="1_6sh32"]
+[ext_resource type="Script" uid="uid://bamwmkcu1ul6f" path="res://scenes/levels/Level.cs" id="1_76388"]
+[ext_resource type="Texture2D" uid="uid://ci4x0x07wa4oy" path="res://scenes/levels/images/Terrain (16x16).png" id="2_ejswk"]
 [ext_resource type="PackedScene" uid="uid://ce5mjtvrn0avh" path="res://scenes/collectables/Kiwi.tscn" id="4_conm7"]
 [ext_resource type="PackedScene" uid="uid://dalmr5k2t2yaq" path="res://scenes/collectables/FinishCheckPoint.tscn" id="5_d3jkd"]
 [ext_resource type="PackedScene" uid="uid://drx48kkm4uyjb" path="res://scenes/enemies/pig_enemy.tscn" id="6_svatc"]
@@ -210,7 +210,7 @@ position = Vector2(116, 91)
 
 [node name="FinishCheckPoint" parent="SceneObjects/Items" instance=ExtResource("5_d3jkd")]
 position = Vector2(550, 556)
-NextScenePath = "res://scenes/Level2.tscn"
+NextScenePath = "res://scenes/levels/Level2.tscn"
 
 [node name="UI" type="CanvasLayer" parent="SceneObjects"]
 
