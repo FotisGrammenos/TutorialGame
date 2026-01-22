@@ -18,7 +18,31 @@ public partial class MainManu : Node
 
 		LoadCharacter();
 	}
-	
+	 
+    private void PeerDisconnected(long id)
+    {
+		GD.Print($"Player disconected {id}");
+    }
+
+    private void PeerConnected(long id)
+    {
+		GD.Print($"Player connected {id}");
+    }
+
+	private void ConnectedToServer()
+	{
+		GD.Print("Connected to server");
+		RpcId(1,
+			"SentPlayerInforamtion",
+			Multiplayer.GetUniqueId(),
+			_gameManager.GetMainCharacter().ResourcePath);
+	}
+
+    private void ConnectionFailed()
+    {
+		GD.Print("Connected FAIL to server");
+	}
+
     public void OnPressedButtonLevel1()
 	{
 		GetTree().ChangeSceneToFile("res://scenes/levels/Level1.tscn");
@@ -34,7 +58,11 @@ public partial class MainManu : Node
 
 		_gameManager.InitMainCaracter(_currentCharacterIndex);
 	}
-
+	public void OnPressedButtonLevel3()
+	{
+		GetTree().ChangeSceneToFile("res://scenes/levels/Level3.tscn");
+		_gameManager.InitMainCaracter(_currentCharacterIndex);
+	}
 	public void OnNextCharacterPressed()
 	{
 		_currentCharacterIndex++;

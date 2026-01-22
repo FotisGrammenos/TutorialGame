@@ -7,6 +7,7 @@
 
 [node name="MainManu" type="Node"]
 script = ExtResource("1_lk5oe")
+adress = "127.0.0.1"
 
 [node name="BackGround" type="TextureRect" parent="."]
 texture_filter = 1

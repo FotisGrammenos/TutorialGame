@@ -128,4 +128,8 @@ public partial class CharacterBody2d : CharacterBody2D
 			_isGettingHit = false;
 		}
     }
+	public void _char_hidden()
+	{
+		GD.Print("GEIA");
+	}
 }
