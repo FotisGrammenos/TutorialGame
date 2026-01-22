@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfx5n4ejlyyko"
-path="res://.godot/imported/Brown.png-50814c0c3445cc7068ef2084de8fe56c.ctex"
+uid="uid://ci0ygspwhysnu"
+path="res://.godot/imported/Jump (34x28).png-82977847589eecb8e1262db22e475027.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Brown.png"
-dest_files=["res://.godot/imported/Brown.png-50814c0c3445cc7068ef2084de8fe56c.ctex"]
+source_file="res://scenes/enemies/Pig/Jump (34x28).png"
+dest_files=["res://.godot/imported/Jump (34x28).png-82977847589eecb8e1262db22e475027.ctex"]
 
 [params]
 

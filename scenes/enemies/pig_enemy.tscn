@@ -1,0 +1,113 @@
+[gd_scene load_steps=16 format=3 uid="uid://drx48kkm4uyjb"]
+
+[ext_resource type="Script" uid="uid://co7am6oga5ldg" path="res://scenes/enemies/PigEnemy.cs" id="1_vgpv2"]
+[ext_resource type="Texture2D" uid="uid://0203mvd7aghv" path="res://scenes/enemies/Pig/Idle (34x28).png" id="2_n7cjv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxnw0"]
+atlas = ExtResource("2_n7cjv")
+region = Rect2(0, 0, 34, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1x41k"]
+atlas = ExtResource("2_n7cjv")
+region = Rect2(34, 0, 34, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvxwb"]
+atlas = ExtResource("2_n7cjv")
+region = Rect2(68, 0, 34, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82v7t"]
+atlas = ExtResource("2_n7cjv")
+region = Rect2(102, 0, 34, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4qxi"]
+atlas = ExtResource("2_n7cjv")
+region = Rect2(136, 0, 34, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1p42"]
+atlas = ExtResource("2_n7cjv")
+region = Rect2(170, 0, 34, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifjrx"]
+atlas = ExtResource("2_n7cjv")
+region = Rect2(204, 0, 34, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ks0fj"]
+atlas = ExtResource("2_n7cjv")
+region = Rect2(238, 0, 34, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jwpb"]
+atlas = ExtResource("2_n7cjv")
+region = Rect2(272, 0, 34, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_famtl"]
+atlas = ExtResource("2_n7cjv")
+region = Rect2(306, 0, 34, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_duul3"]
+atlas = ExtResource("2_n7cjv")
+region = Rect2(340, 0, 34, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_frcn0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxnw0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1x41k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvxwb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82v7t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4qxi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1p42")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifjrx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ks0fj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jwpb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_famtl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_duul3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vgpv2"]
+size = Vector2(15.000002, 15.200003)
+
+[node name="PigEnemy" type="Area2D"]
+texture_filter = 1
+scale = Vector2(5, 5)
+script = ExtResource("1_vgpv2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-3, -7)
+sprite_frames = SubResource("SpriteFrames_frcn0")
+autoplay = "default"
+frame_progress = 0.069259875
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.2999998, -2.1999996)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_vgpv2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../..")
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]

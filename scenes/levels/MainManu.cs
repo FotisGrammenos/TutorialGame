@@ -21,7 +21,7 @@ public partial class MainManu : Node
 	
     public void OnPressedButtonLevel1()
 	{
-		GetTree().ChangeSceneToFile("res://scenes/Level1.tscn");
+		GetTree().ChangeSceneToFile("res://scenes/levels/Level1.tscn");
 		_gameManager.InitCollectables();
 
 		_gameManager.InitMainCaracter(_currentCharacterIndex);
@@ -29,7 +29,7 @@ public partial class MainManu : Node
 
 	public void OnPressedButtonLevel2()
 	{
-		GetTree().ChangeSceneToFile("res://scenes/Level2.tscn");
+		GetTree().ChangeSceneToFile("res://scenes/levels/Level2.tscn");
 		_gameManager.InitCollectables();
 
 		_gameManager.InitMainCaracter(_currentCharacterIndex);

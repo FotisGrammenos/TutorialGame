@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://ce3io37qtrwd7"]
 
-[ext_resource type="Texture2D" uid="uid://b3xd0py30ccj3" path="res://scenes/Yellow.png" id="1_5tif6"]
-[ext_resource type="Script" uid="uid://dfhxw68cnuhk6" path="res://scenes/MainManu.cs" id="1_lk5oe"]
-[ext_resource type="Texture2D" uid="uid://bhgk145fd1ewl" path="res://scenes/Kiwi_HunderLogo.png" id="2_lk5oe"]
-[ext_resource type="Texture2D" uid="uid://bfx5n4ejlyyko" path="res://scenes/Brown.png" id="4_x3tno"]
+[ext_resource type="Texture2D" uid="uid://b3xd0py30ccj3" path="res://scenes/levels/images/Yellow.png" id="1_5tif6"]
+[ext_resource type="Script" uid="uid://dfhxw68cnuhk6" path="res://scenes/levels/MainManu.cs" id="1_lk5oe"]
+[ext_resource type="Texture2D" uid="uid://bhgk145fd1ewl" path="res://scenes/levels/images/Kiwi_HunderLogo.png" id="2_lk5oe"]
+[ext_resource type="Texture2D" uid="uid://bfx5n4ejlyyko" path="res://scenes/levels/images/Brown.png" id="4_x3tno"]
 
 [node name="MainManu" type="Node"]
 script = ExtResource("1_lk5oe")
