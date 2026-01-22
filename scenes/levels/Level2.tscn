@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://cedbwp5qhhx2d"]
 
-[ext_resource type="Texture2D" uid="uid://bfx5n4ejlyyko" path="res://scenes/Brown.png" id="1_4p0dt"]
-[ext_resource type="Script" uid="uid://bamwmkcu1ul6f" path="res://scenes/Level.cs" id="1_qwp14"]
-[ext_resource type="Texture2D" uid="uid://ci4x0x07wa4oy" path="res://scenes/Terrain (16x16).png" id="2_qwp14"]
+[ext_resource type="Texture2D" uid="uid://bfx5n4ejlyyko" path="res://scenes/levels/images/Brown.png" id="1_4p0dt"]
+[ext_resource type="Script" uid="uid://bamwmkcu1ul6f" path="res://scenes/levels/Level.cs" id="1_qwp14"]
+[ext_resource type="Texture2D" uid="uid://ci4x0x07wa4oy" path="res://scenes/levels/images/Terrain (16x16).png" id="2_qwp14"]
 [ext_resource type="PackedScene" uid="uid://ce5mjtvrn0avh" path="res://scenes/collectables/Kiwi.tscn" id="4_0jmjk"]
 [ext_resource type="PackedScene" uid="uid://dalmr5k2t2yaq" path="res://scenes/collectables/FinishCheckPoint.tscn" id="5_v8268"]
 [ext_resource type="Script" uid="uid://64yvbl8p2qlv" path="res://GameManager.cs" id="6_rcugv"]
@@ -209,7 +209,7 @@ position = Vector2(478, 336)
 
 [node name="FinishCheckPoint" parent="SceneObjects/Items" instance=ExtResource("5_v8268")]
 position = Vector2(870, 69)
-NextScenePath = "res://scenes/MainManu.tscn"
+NextScenePath = "res://scenes/levels/MainManu.tscn"
 
 [node name="UI" type="CanvasLayer" parent="SceneObjects"]
 

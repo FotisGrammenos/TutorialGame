@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bic75dyfvyfpg"]
+[gd_scene load_steps=10 format=3 uid="uid://bkyklv3vea01"]
 
-[ext_resource type="Texture2D" uid="uid://bfx5n4ejlyyko" path="res://scenes/Brown.png" id="1_6sh32"]
-[ext_resource type="Script" uid="uid://bamwmkcu1ul6f" path="res://scenes/Level.cs" id="1_76388"]
-[ext_resource type="Texture2D" uid="uid://ci4x0x07wa4oy" path="res://scenes/Terrain (16x16).png" id="2_ejswk"]
+[ext_resource type="Texture2D" uid="uid://bfx5n4ejlyyko" path="res://scenes/levels/images/Brown.png" id="1_6sh32"]
+[ext_resource type="Script" uid="uid://bamwmkcu1ul6f" path="res://scenes/levels/Level.cs" id="1_76388"]
+[ext_resource type="Texture2D" uid="uid://ci4x0x07wa4oy" path="res://scenes/levels/images/Terrain (16x16).png" id="2_ejswk"]
 [ext_resource type="PackedScene" uid="uid://ce5mjtvrn0avh" path="res://scenes/collectables/Kiwi.tscn" id="4_conm7"]
 [ext_resource type="PackedScene" uid="uid://dalmr5k2t2yaq" path="res://scenes/collectables/FinishCheckPoint.tscn" id="5_d3jkd"]
+[ext_resource type="PackedScene" uid="uid://drx48kkm4uyjb" path="res://scenes/enemies/pig_enemy.tscn" id="6_svatc"]
 [ext_resource type="Script" uid="uid://64yvbl8p2qlv" path="res://GameManager.cs" id="6_u3awl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tda05"]
@@ -209,7 +210,7 @@ position = Vector2(116, 91)
 
 [node name="FinishCheckPoint" parent="SceneObjects/Items" instance=ExtResource("5_ge24g")]
 position = Vector2(550, 556)
-NextScenePath = "res://scenes/Level2.tscn"
+NextScenePath = "res://scenes/levels/Level2.tscn"
 
 [node name="UI" type="CanvasLayer" parent="SceneObjects"]
 
@@ -238,6 +239,9 @@ vertical_alignment = 1
 unique_name_in_owner = true
 position = Vector2(30, 513)
 scale = Vector2(3, 3)
+
+[node name="PigEnemy" parent="SceneObjects" instance=ExtResource("6_svatc")]
+position = Vector2(254, 545)
 
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
