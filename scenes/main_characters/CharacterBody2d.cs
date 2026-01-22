@@ -19,16 +19,6 @@ public partial class CharacterBody2d : CharacterBody2D
 
     public override void _Ready()
     {
-<<<<<<< HEAD
-        GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer")
-			.SetMultiplayerAuthority(int.Parse(Name));
-    }
-
-	public override void _PhysicsProcess(double delta)
-	{  
-		if(GetNode<MultiplayerSynchronizer>("MultiplayerSynchronizer")
-			.GetMultiplayerAuthority() != Multiplayer.GetUniqueId())
-=======
         _animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
     	_animationPlayer.AnimationFinished += OnAnimationPlayerAnimationFinished;
 
@@ -40,7 +30,6 @@ public partial class CharacterBody2d : CharacterBody2D
 	{  
 		Attack();
 		if (_isAttacking || _isGettingHit)
->>>>>>> 560aa9bde024cd65d8fd7e1e2e00051cd0fc0289
 		{
 			return;
 		}
@@ -139,4 +128,8 @@ public partial class CharacterBody2d : CharacterBody2D
 			_isGettingHit = false;
 		}
     }
+	public void _char_hidden()
+	{
+		GD.Print("GEIA");
+	}
 }

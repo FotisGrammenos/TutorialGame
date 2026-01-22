@@ -58,7 +58,11 @@ public partial class MainManu : Node
 
 		_gameManager.InitMainCaracter(_currentCharacterIndex);
 	}
-
+	public void OnPressedButtonLevel3()
+	{
+		GetTree().ChangeSceneToFile("res://scenes/levels/Level3.tscn");
+		_gameManager.InitMainCaracter(_currentCharacterIndex);
+	}
 	public void OnNextCharacterPressed()
 	{
 		_currentCharacterIndex++;
